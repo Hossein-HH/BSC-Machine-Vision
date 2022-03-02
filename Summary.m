@@ -170,15 +170,15 @@ function func3(x,y)
 end
 
 %? no out no in
-function output = func4()
+function out1 = func4()
 end
 
 %? no out no in
-function output = func8(x)
+function out1 = func8(x)
 end
 
 %? no out no in
-function output = func9(x,y)
+function out1 = func9(x,y)
 end
 
 %? multi out no in
@@ -192,3 +192,6 @@ end
 %? no out no in
 function [m,n] = func7()
 end
+
+% برنامه اي بنويسيد كه ماكسيمم مقادير ورودي را برگرداند وارد شده توسط كربر
+% m file e barname, file function
