@@ -143,3 +143,52 @@ a = [1 4 5 7];
 for i = a
     disp("ali");
 end
+
+%* controls
+%************************************************************************
+
+%? write functions in Matlab
+
+function output = myFun(input)
+%myFun - Description
+%
+% Syntax: output = myFun(input)
+%
+% Long description
+end
+
+%? no out no in
+function func1()
+end
+
+%? no out 1 in
+function func2(x)
+end
+
+%? no out multi in
+function func3(x,y)
+end
+
+%? no out no in
+function output = func4()
+end
+
+%? no out no in
+function output = func8(x)
+end
+
+%? no out no in
+function output = func9(x,y)
+end
+
+%? multi out no in
+function [m,n] = func5(x)
+end
+
+%? no out no in
+function [m,n] = func6(x,y)
+end
+
+%? no out no in
+function [m,n] = func7()
+end
