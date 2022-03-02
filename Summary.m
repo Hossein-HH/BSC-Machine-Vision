@@ -193,5 +193,15 @@ end
 function [m,n] = func7()
 end
 
-% برنامه اي بنويسيد كه ماكسيمم مقادير ورودي را برگرداند وارد شده توسط كربر
-% m file e barname, file function
+%? call and feedback from functions
+x = func7()
+%? x ==>> first output of func7 outputs = m
+
+%? diff .m files and functions
+%? if we write a func with a common name by .m file we can use that force intialize the func args
+%? But
+%? if we write some codes without or with a function in a .m file we can call that "FILE NAME" and run all codes on that
+%? (that means if we have some args in that func matlab automaticaly initilize them from common name in "WORKSPACE")
+
+%! age to work space arguman haye voroodi to work space nabashan ?
+%! ostad age output1,3 ro bekhaym 2 ro nakhaym bayad chikar konim ?
