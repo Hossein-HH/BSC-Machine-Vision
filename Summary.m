@@ -203,5 +203,17 @@ x = func7()
 %? if we write some codes without or with a function in a .m file we can call that "FILE NAME" and run all codes on that
 %? (that means if we have some args in that func matlab automaticaly initilize them from common name in "WORKSPACE")
 
-%! age to work space arguman haye voroodi to work space nabashan ?
-%! ostad age output1,3 ro bekhaym 2 ro nakhaym bayad chikar konim ?
+%! age output1,3 ro bekhaym 2 ro nakhaym bayad chikar konim ?
+
+%? image procceing
+imread('image location')
+% for read image
+
+imshow(only matrix)
+
+rgb2gray()
+
+% finding edge by canny mode
+edge(m,'canny')
+
+% yek tasvire kooh yek tasvire keshti yek tasvir az khodkar medad laptop ya fazaye marboot be kelass yek tasrive tomore maghzi gharnieye cheshm ra bekhanid va be sorate rangi va siah va sefid nemayesh dahid
