@@ -4,12 +4,12 @@
 %? ;(end of line) => for show/hide answer
 %? []             => define a matris
 %? ;(in [ ])      => split rows of a matris
-%? ()             => for set index of an array 
+%? ()             => for set index of an array
 %? a:b            => every elements between a & b (index)
-%? a:b:c          => a = start | b = length (default = 1) | c = end 
+%? a:b:c          => a = start | b = length (default = 1) | c = end
 %? :              => every elements in a dimensional
 %? w=[a ;(or,)b]  => we can cobine 2 matrix and set them to a var
-%? clc            => clear screen                   
+%? clc            => clear screen
 %? clear          => claer all vars in workspace
 %? clear x        => claer x from workspaace
 %? .^             => ^
@@ -26,13 +26,13 @@
 
 % make matrixs for multiplication
 ones(x1)
-ones(x1,x2)
-ones(x1,x2,x3)
+ones(x1, x2)
+ones(x1, x2, x3)
 
 % % make matrixs for sum
 zeros(x1)
-zeros(x1,x2)
-zeros(x1,x2,x3)
+zeros(x1, x2)
+zeros(x1, x2, x3)
 %! each xn means a dimensional
 
 % show long format or short format for float numbers
@@ -49,7 +49,7 @@ rgb2gray()
 a = double(b)
 
 % draw the diagrams
-plot() 
+plot()
 
 % integral
 int()
@@ -78,8 +78,8 @@ subplot()
 plot3()
 
 % t = 0:pi/50:10*pi;
-% st = sin(t); 
-% ct = cos(t); 
+% st = sin(t);
+% ct = cos(t);
 % plot3(st,ct,t)
 
 % ? draw a digram with automatically domain (x in blow)
@@ -88,7 +88,7 @@ ezplot()
 
 % the heart ❤️
 syms x y;
-ezplot(x^2 +(y - nthroot(x^2,3))^2 - 1);
+ezplot(x^2 + (y - nthroot(x^2, 3))^2 - 1);
 
 % syms x;
 % ezplot(2*x ^ 2 *sin(x))
@@ -112,34 +112,36 @@ disp('text')
 
 input("som thing : ")
 
-
 if condition
-    
+
 end
 
 if condition
-    
+
 else
 end
+
 if condition
-    
+
 elseif condition
     body
 end
 
 while condition
-    
+
 end
 
-for i=1:4
+for i = 1:4
 end
 
-a=1:4
+a = 1:4
+
 for i = a
-disp("ali");
+    disp("ali");
 end
 
 a = [1 4 5 7];
+
 for i = a
     disp("ali");
 end
@@ -150,11 +152,11 @@ end
 %? write functions in Matlab
 
 function output = myFun(input)
-%myFun - Description
-%
-% Syntax: output = myFun(input)
-%
-% Long description
+    %myFun - Description
+    %
+    % Syntax: output = myFun(input)
+    %
+    % Long description
 end
 
 %? no out no in
@@ -166,7 +168,7 @@ function func2(x)
 end
 
 %? no out multi in
-function func3(x,y)
+function func3(x, y)
 end
 
 %? no out no in
@@ -178,19 +180,19 @@ function out1 = func8(x)
 end
 
 %? no out no in
-function out1 = func9(x,y)
+function out1 = func9(x, y)
 end
 
 %? multi out no in
-function [m,n] = func5(x)
+function [m, n] = func5(x)
 end
 
 %? no out no in
-function [m,n] = func6(x,y)
+function [m, n] = func6(x, y)
 end
 
 %? no out no in
-function [m,n] = func7()
+function [m, n] = func7()
 end
 
 %? call and feedback from functions
@@ -214,6 +216,46 @@ imshow(only matrix)
 rgb2gray()
 
 % finding edge by canny mode
-edge(m,'canny')
+edge(m, 'canny')
 
-% yek tasvire kooh yek tasvire keshti yek tasvir az khodkar medad laptop ya fazaye marboot be kelass yek tasrive tomore maghzi gharnieye cheshm ra bekhanid va be sorate rangi va siah va sefid nemayesh dahid
+
+% Separation R G B layers from a picture
+I1 = imread("car1.jpg")
+Ired = I1(:, :, 1);
+Iblue = I1(:, :, 2);
+Igreen = I1(:, :, 3);
+
+I2 = rgb2ycbcr(I1);
+
+%? create some numbers between 0 & 1
+rand()
+
+%? create some numbers of Z
+randi([0, 255], 64, 64)
+
+%? type casting
+%? casting to uint8
+uint8(randi([0, 255], 64, 64))
+
+%? print colorize
+image()
+
+%? create a 3D matrix
+cat(num_of_dimentioenals, a, b, c)
+% cat(3,a,b,c)
+
+% 400 ta structue
+Img(1:400) = struct('field_name', zeros(100, 100, 'uint8'));
+x = struct('c1', zeros(5), 'c2', zeros(5));
+
+for i = 1:400
+    n = num2str(i);
+    disp([imread('a (', n, ').jpg')]);
+    I = imread(['a (', n, ').jpg']);
+    Img(i).cdata = I;
+    subplot(2,2,i);
+    imshow(Img(i).'field_name')
+end
+
+% 10 tasvir darmorede tasavire kahkeshan ha ke nasa marefi karde ast bekhanid 
+% va be halate saih va sefid bebarid
