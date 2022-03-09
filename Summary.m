@@ -257,5 +257,5 @@ for i = 1:400
     imshow(Img(i).'field_name')
 end
 
-% 10 tasvir darmorede tasavire kahkeshan ha ke nasa marefi karde ast bekhanid 
-% va be halate saih va sefid bebarid
+% ! read pictures from diff formats by for and structure
+% ! if the image files not organization
