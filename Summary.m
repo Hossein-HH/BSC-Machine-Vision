@@ -257,5 +257,4 @@ for i = 1:400
     imshow(Img(i).'field_name')
 end
 
-% ! read pictures from diff formats by for and structure
-% ! if the image files not organization
+%? az har kodam az tasavire electro magnetit 1 tasvir ra az internet daryaft konid bekhanid namayesh dahid datasete marbooteye on raniz elam konid
