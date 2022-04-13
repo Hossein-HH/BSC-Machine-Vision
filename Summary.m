@@ -256,5 +256,3 @@ for i = 1:400
     subplot(2,2,i);
     imshow(Img(i).'field_name')
 end
-
-%? az har kodam az tasavire electro magnetit 1 tasvir ra az internet daryaft konid bekhanid namayesh dahid datasete marbooteye on raniz elam konid
