@@ -256,3 +256,9 @@ for i = 1:400
     subplot(2,2,i);
     imshow(Img(i).'field_name')
 end
+
+
+%? HW9  : ba doorbin yek shey ro rosh focus mikoni va aks migiri va ye aks dige ham migiri ba focus atrafe shey
+%? syah , sefideshon mikoni ====> histogeam 1,2 , tashime histogram 1,2 , AND OR va tafrigh beyne 2 ta tasvir
+
+%? HW10 :
