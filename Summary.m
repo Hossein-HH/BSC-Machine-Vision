@@ -33,7 +33,7 @@ ones(x1, x2, x3)
 zeros(x1)
 zeros(x1, x2)
 zeros(x1, x2, x3)
-%! each xn means a dimensional
+%? each xn means a dimensional
 
 % show long format or short format for float numbers
 format short
@@ -205,8 +205,6 @@ x = func7()
 %? if we write some codes without or with a function in a .m file we can call that "FILE NAME" and run all codes on that
 %? (that means if we have some args in that func matlab automaticaly initilize them from common name in "WORKSPACE")
 
-%! age output1,3 ro bekhaym 2 ro nakhaym bayad chikar konim ?
-
 %? image procceing
 imread('image location')
 % for read image
@@ -257,6 +255,45 @@ for i = 1:400
     imshow(Img(i).'field_name')
 end
 
+%? Intensity
+
+%? imadjust() =>> Intensity converts (tabdilate intensity)
+%? imadjust(I,[low_in high_in],[low_out high_out],gamma)
+%? [low_in high_in] bazeye voroodi tabdil
+%? [low_out high_out] bazeye khorooji tabdil
+%? gamma => a parameter for Map (negasht)
+%? g < 1 =>> increase image brightness
+%? g > 1 =>> decrease image brightness
+%? defalut gamma = 1
+
+imadjust();
+I1 = imread("moon.tif");
+imshow(I1)
+I2 = imadjust(I1,[0,1],[1,0]);
+%? 0,1 => 1,0 means convert white to black and black to white
+figure;
+imshow(I2);
+
+%? be ezaye voroodi kocheck tar az bazeye khoroji => siah ha siah tar mishaan inja sefida sefid tar
+I1 = imread("moon.tif");
+imshow(I1)
+I2 = imadjust(I1,[0.5,0.75],[0,1]);
+figure;
+imshow(I2);
+
+%? this code show to us more details in images
+
+%? log in im2uint8
+I1 = imread("moon.tif");
+imshow(I1)
+
+I2 = im2uint8(log(j+double(I1)));
+%? the j no need to define 
+
+figure;
+imshow(I2);
+
+%! what warnin in im2uint8 ????
 
 %? HW9  : ba doorbin yek shey ro rosh focus mikoni va aks migiri va ye aks dige ham migiri ba focus atrafe shey
 %? syah , sefideshon mikoni ====> histogeam 1,2 , tashime histogram 1,2 , AND OR va tafrigh beyne 2 ta tasvir
