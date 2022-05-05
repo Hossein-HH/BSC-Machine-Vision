@@ -72,6 +72,15 @@ figure
 % show many plot in a figure
 subplot()
 
+subplot(2,1,1);
+x = linspace(0,10);
+y1 = sin(x);
+plot(x,y1)
+
+subplot(2,1,2); 
+y2 = sin(5*x);
+plot(x,y2)
+
 %? draw nD diagrams
 
 %? 3D diagrams
@@ -216,7 +225,6 @@ rgb2gray()
 % finding edge by canny mode
 edge(m, 'canny')
 
-
 % Separation R G B layers from a picture
 I1 = imread("car1.jpg")
 Ired = I1(:, :, 1);
@@ -251,7 +259,7 @@ for i = 1:400
     disp([imread('a (', n, ').jpg')]);
     I = imread(['a (', n, ').jpg']);
     Img(i).cdata = I;
-    subplot(2,2,i);
+    subplot(2, 2, i);
     imshow(Img(i).'field_name')
 end
 
@@ -269,7 +277,7 @@ end
 imadjust();
 I1 = imread("moon.tif");
 imshow(I1)
-I2 = imadjust(I1,[0,1],[1,0]);
+I2 = imadjust(I1, [0, 1], [1, 0]);
 %? 0,1 => 1,0 means convert white to black and black to white
 figure;
 imshow(I2);
@@ -277,7 +285,7 @@ imshow(I2);
 %? be ezaye voroodi kocheck tar az bazeye khoroji => siah ha siah tar mishaan inja sefida sefid tar
 I1 = imread("moon.tif");
 imshow(I1)
-I2 = imadjust(I1,[0.5,0.75],[0,1]);
+I2 = imadjust(I1, [0.5, 0.75], [0, 1]);
 figure;
 imshow(I2);
 
@@ -287,15 +295,143 @@ imshow(I2);
 I1 = imread("moon.tif");
 imshow(I1)
 
-I2 = im2uint8(log(j+double(I1)));
-%? the j no need to define 
+I2 = im2uint8(log(j + double(I1)));
+%? the j no need to define
 
 figure;
 imshow(I2);
 
 %! what warnin in im2uint8 ????
 
-%? HW9  : ba doorbin yek shey ro rosh focus mikoni va aks migiri va ye aks dige ham migiri ba focus atrafe shey
-%? syah , sefideshon mikoni ====> histogeam 1,2 , tashime histogram 1,2 , AND OR va tafrigh beyne 2 ta tasvir
+%? histogram => use imhist()
+%? namayeshe tooziee rang ha az teyfe 0-255 , tedad tekrare har rang har che avalle nemoodar bolandtar bashe yani tasvir siahtar hast
+I1 = imread("moon.tif");
+h = imhist(I1);
+plot(h);
+figure;
+imshow(I1);
+
+%? nemodare miliee (bar chart)
+figure;
+bar(h)
+
+%? imhist_whitout_assignment
+I1 = imread("moon.tif");
+imhist(I1);
+%? that's show the digram by bar chart automatically
+
+%? histeq() => tashime histogram
+figure; imshow(I1);
+figure; imhist(I1);
+g = histeq(I1, 256);
+figure; imshow(g);
+figure; imhist(g);
+
+%? tatbighe histogram (taeene sjekle kollieye hostogram)
+%? CDF
+%? mohasebe bar mabneye maokose histograme mojood
+%? ke natijeye on tamarkoze histogeram az sathe tarik be sathe rooshan khahad bood
+%? be zabane sade shift payda mikonad
 
 %? HW10 :
+
+%? HW11 :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%? 1401/02/11
+
+I = randi([0, 255], 128, 128);
+imshow(uint8(I));
+
+I = randi([0, 255], 128, 128);
+I(54:74, 54:74) = 0;
+I(:, :, 2) = I;
+I(:, :, 3) = I(:, :, 1);
+imshow(uint8(I));
+
+I = randi([0, 255], 128, 128);
+I(54:74, 54:74) = 0;
+I(:, :, 2) = I + 5;
+I(:, :, 3) = I(:, :, 1) - 45;
+imshow(uint8(I));
+%? 1 R
+%? 2 G
+%? 3 B
+
+% ? cat
+A = ones(3)
+B = zeros(3)
+C1 = cat(1, A, B)
+C2 = cat(2, A, B)
+
+A = rand(2, 3, 4);
+B = rand(2, 3, 5);
+C = cat(3, A, B);
+szC = size(C)
+
+I = randi([0, 255], 128, 128);
+I(54:74, 54:74) = 0;
+I1 = I;
+I2 = I + 76;
+I3 = I + 24;
+I4 = cat(3, I1, I2, I3);
+imshow(uint8(I4));
+
+%? NTSC
+Y roshanaee
+I signal
+Q signal
+
+I = imread("peppers.png");
+imshow(I);
+figure;
+ntscimage = rgb2ntsc(I);
+imshow(ntscimage);
+I2 = ntsc2rgb(ntscimage);
+figure;
+imshow(I2);
+
+%? PSNR 
+psnr(double(I),I2)
+%? bishtar behtar
+%? moghayeseye keifiate 2 tasvir
+
+mse(double(I),I2)
+%? kamtar behtar
+% ميانگين مربعات خطا
+
+%? HW : yek tasvire x ra gerefte on ra ba maghadire tasadofie mokhtalef be ntsc tabdil konid va sepas keifiate tasavire be dast amade ra nesbat be tasvire ntsc e khorojie code matlab moghayese konid 
