@@ -8,7 +8,7 @@
 %? a:b            => every elements between a & b (index)
 %? a:b:c          => a = start | b = length (default = 1) | c = end
 %? :              => every elements in a dimensional
-%? w=[a ;(or,)b]  => we can cobine 2 matrix and set them to a var
+%? w=[a ;(or,)b]  => we can combine 2 matrix and set them to a var
 %? clc            => clear screen
 %? clear          => claer all vars in workspace
 %? clear x        => claer x from workspaace
@@ -511,9 +511,11 @@ F = max(f1(:));
 figure;
 imshow(f1/F)
 
-%? HW11 :
-
 %? 1401/02/11
+
+%? omghe bit
+
+% (2^b)^3 ==> b = omghe bit
 
 I = randi([0, 255], 128, 128);
 imshow(uint8(I));
@@ -529,6 +531,8 @@ I(54:74, 54:74) = 0;
 I(:, :, 2) = I + 5;
 I(:, :, 3) = I(:, :, 1) - 45;
 imshow(uint8(I));
+
+%? first layeris R then G then B
 %? 1 R
 %? 2 G
 %? 3 B
@@ -543,6 +547,8 @@ A = rand(2, 3, 4);
 B = rand(2, 3, 5);
 C = cat(3, A, B);
 szC = size(C)
+
+%? sakhte tasvire RGB az 3 ta tasvire siah sefid
 
 I = randi([0, 255], 128, 128);
 I(54:74, 54:74) = 0;
@@ -566,7 +572,9 @@ I2 = ntsc2rgb(ntscimage);
 figure;
 imshow(I2);
 
-%? PSNR
+%? keyfiate tasvir : 
+
+%? PSNR 
 psnr(double(I), I2)
 %? bishtar behtar
 %? moghayeseye keifiate 2 tasvir
