@@ -301,7 +301,7 @@ I2 = im2uint8(log(j + double(I1)));
 figure;
 imshow(I2);
 
-%! what warnin in im2uint8 ????
+%! what warning in im2uint8 ????
 
 %? histogram => use imhist()
 %? namayeshe tooziee rang ha az teyfe 0-255 , tedad tekrare har rang har che avalle nemoodar bolandtar bashe yani tasvir siahtar hast
@@ -352,7 +352,6 @@ figure; imhist(g);
 % dar raveshe gheyre khati raveshe mask matrah nemishavad va ba hefze ideye asliye filtering filter dar ghalebe yek tabee gheyre khati bar roye pixel haye mojood dar hamsayegi amal mikonad
 % farz konid voroodie filteringe gheyre khati yek tasvir ba andazeye m*n bashad va andazaye hamsayegi an khorooji tasvir hadeaksar mn * mn pixel khahad bood
 % colfilt be hamrahe yek taeen konandeye noghate marzi be name padarray mitavanand in filter ra baraye shoma erae konand  
-
 
 %! hamvare andazeye mask fard ast
 
@@ -445,20 +444,72 @@ I3 = ifft2(I2);
 figure;
 imshow(I3);
 
-
-
-
 %? DWT dwt => tabdile forieye mojak
 % use dwt for image watermarking like this : 
 % https://uk.mathworks.com/matlabcentral/fileexchange/78790-digital-watermarking-comparison-of-dct-and-dwt-methods
 
-
-
-
 %  osolan ideye filtering dar hozeye fereqance bar mabanye entekhabe yek tabe tbadile filtere monaseb baraye eejade raftare delkhah dar fereqance mibashad
 %  masalan yek tasvire blur shode ba komake yek filtere paeen gozar mitavand bedast biayad
 
-%? HW10 :
+%? ejrae algorithmie fft besyar sari tar az dft mibashad
+
+%? marahele filtering dar hozeye fereqance
+% 1 tarife parametr haye avalie
+% 2 anjame amaliate tavabe forie
+% 3 tolide filter
+% 4 zarbe filter dar tabe forie H*F
+% 5 mohasebeye joze haghighi az tabe forie (real(fft^-1()))
+% 6 boreshe bala va samte chepe netijeye bedast amade albate agar matrise avalie daraye abaade fard bashad masalan 101 * 101 
+% ama agar zooj bashad masalan 100 * 100 niazi be inkar nist
+
+%? meshgrid()
+% in tabe yek array jahate toolide filter haye fereqancy erae mikonad
+
+[x,y] = meshgrid(-128:127,-128:127);
+z = sqrt(x.^2+y.^2);
+c = (z<15);
+imshow(c)
+af = fftshift(fft2(c));
+f1 = log(1+abs(af));
+F = max(f1(:));
+figure;
+imshow(f1/F);
+
+% Create Circle
+[x, y] = meshgrid(-128:127, -128:127);
+z = sqrt(x.^2 + y.^2);
+c1 = (z < 15);
+imshow(c1);
+% Image Read
+c = imread('cameraman.tif');
+figure;
+imshow(c);
+af = fftshift(fft2(c));
+% Circle and Image
+cf1 = af .* c1;
+d = ifft2(cf1);
+f1 = log(1 + abs(d));
+F = max(f1(:));
+figure;
+imshow(f1 / F);
+
+a = zeros(256,256);
+a(78:178,78:178) = 1;
+imshow(a)
+af = fftshift(fft2(a));
+f1 = abs(af);
+F = max(f1(:));
+figure;
+imshow(f1/F)
+
+a = zeros(256,256);
+a(78:178,78:178) = 1;
+imshow(a)
+af = fftshift(fft2(a));
+f1 = log(1+abs(af));
+F = max(f1(:));
+figure;
+imshow(f1/F)
 
 %? HW11 :
 
