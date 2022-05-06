@@ -393,7 +393,70 @@ imshow(I3);
 
 %! filter haye estandarde gheyre_khati
 %! imnoise , ordfilt
+%? im noise create noise on our image
 
+I1 = imread('tire.tif');
+imshow(I1);
+I2 = imnoise(I1,'salt & pepper',0.2);
+%? 0.2 shedate noise hast
+figure;
+imshow(I2);
+
+%? medfilt2 repair noises on image
+I1 = imread('tire.tif');
+imshow(I1);
+I2 = imnoise(I1,'salt & pepper',0.2);
+figure;
+imshow(I2);
+I3 = medfilt2(I2);
+figure;
+imshow(I3);
+
+%? frequency processing
+% manzoor az frequency processing enteghale tasvir az hozeye makan va matris be hozeye signal , fereqance mibashad
+% hamoon tabdile forie
+% omimi tarin ravesh estefade az tabdile forieey gosasteye 2D mibashad
+% DFT  : image2signal 
+% IDFT : siignal2image  
+% fast DFT => fft
+% fft2 : fft with 2D output 
+% ifft2 : fast 2D IDFT
+
+I1 = imread('tire.tif');
+imshow(I1);
+I2 = fft2(I1);
+
+% real part
+I1 = imread('tire.tif');
+imshow(I1);
+I2 = fft2(I1);
+>> I1 = imread('tire.tif');
+imshow(I1);
+I2 = fft2(I1);
+I3 = uint8(abs(I2));
+figure;
+imshow(I3);
+
+% IDFT ifft2 for convert signal to image
+I1 = imread('tire.tif');
+imshow(I1);
+I2 = fft2(I1);
+I3 = ifft2(I2);
+figure;
+imshow(I3);
+
+
+
+
+%? DWT dwt => tabdile forieye mojak
+% use dwt for image watermarking like this : 
+% https://uk.mathworks.com/matlabcentral/fileexchange/78790-digital-watermarking-comparison-of-dct-and-dwt-methods
+
+
+
+
+%  osolan ideye filtering dar hozeye fereqance bar mabanye entekhabe yek tabe tbadile filtere monaseb baraye eejade raftare delkhah dar fereqance mibashad
+%  masalan yek tasvire blur shode ba komake yek filtere paeen gozar mitavand bedast biayad
 
 %? HW10 :
 
