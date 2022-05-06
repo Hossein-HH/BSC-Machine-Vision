@@ -72,14 +72,14 @@ figure
 % show many plot in a figure
 subplot()
 
-subplot(2,1,1);
-x = linspace(0,10);
+subplot(2, 1, 1);
+x = linspace(0, 10);
 y1 = sin(x);
-plot(x,y1)
+plot(x, y1)
 
-subplot(2,1,2); 
-y2 = sin(5*x);
-plot(x,y2)
+subplot(2, 1, 2);
+y2 = sin(5 * x);
+plot(x, y2)
 
 %? draw nD diagrams
 
@@ -333,44 +333,71 @@ figure; imhist(g);
 %? ke natijeye on tamarkoze histogeram az sathe tarik be sathe rooshan khahad bood
 %? be zabane sade shift payda mikonad
 
+%? paerazeshe yek hamsayegi :
+% 1.taeene markaz
+% 2.anjame amaliate morede nazar bar roye yek pixels
+% 3.dar nazar gereftane natijeye amaliat be onvane khoroji pardazesh dar on noghte
+% 4.tekrare in faraynd baraye kole pixel ha
+
+%? ravesh haye khatie filteringe fazaee :
+% convulution : 1.zarbe kollieye pixel haye hamsayegi dar zaribe motanazer va jame natayej ba ham
+% 2.zarbe pixele morede nazar dar zaribe motanazer va jam ba pixel haye hamsayegi
+
+% 1  :
+% agar zaribe hamsayegi ra M*N begirim be M8N zarib niaz darim ke be an matrise zarayeb , filter , mask , ... migooeem
+% enteghale markaze mask dar tasvire F az yek noghte be noghteye digar va mohasebeye pasokhe farayand
+
+%? ravesh haye ghyre_khatie filteringe fazaee :
+% bejaye + , * az yekseri mohasebate gheyre_khati bar roye pixel ha estefade mishavad
+% dar raveshe gheyre khati raveshe mask matrah nemishavad va ba hefze ideye asliye filtering filter dar ghalebe yek tabee gheyre khati bar roye pixel haye mojood dar hamsayegi amal mikonad
+% farz konid voroodie filteringe gheyre khati yek tasvir ba andazeye m*n bashad va andazaye hamsayegi an khorooji tasvir hadeaksar mn * mn pixel khahad bood
+% colfilt be hamrahe yek taeen konandeye noghate marzi be name padarray mitavanand in filter ra baraye shoma erae konand  
+
+
+%! hamvare andazeye mask fard ast
+
+g = imfilter(f, w, filtering_mode, option, size);
+% f = image
+% w = mask
+% option = noe gostaresh
+% size = {same, full}
+
+A = magic(5);
+mask = [-1 0 1];
+imfilter(A,mask)
+
+I1 = imread('peppers.png');
+imshow(I1);
+mask = ones(3);
+I2 = imfilter(I1,mask);
+figure;
+imshow(I2);
+
+
+I1 = imread('peppers.png');
+imshow(I1);
+mask = fspecial('motion',50,45);
+I2 = imfilter(I1,mask);
+figure;
+imshow(I2);
+
+I1 = imread('tire.tif');
+imshow(I1);
+mask = [1 1 1; 1 2 1; 1 1 1];
+I2 = imfilter(I1,mask,'replicate');
+figure;
+imshow(I2,[]);
+I3 = uint8(colfilt(I1, [5 5],'sliding',@mean));
+figure;
+imshow(I3);
+
+%! filter haye estandarde gheyre_khati
+%! imnoise , ordfilt
+
+
 %? HW10 :
 
 %? HW11 :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 %? 1401/02/11
 
@@ -425,13 +452,13 @@ I2 = ntsc2rgb(ntscimage);
 figure;
 imshow(I2);
 
-%? PSNR 
-psnr(double(I),I2)
+%? PSNR
+psnr(double(I), I2)
 %? bishtar behtar
 %? moghayeseye keifiate 2 tasvir
 
-mse(double(I),I2)
+mse(double(I), I2)
 %? kamtar behtar
 % ميانگين مربعات خطا
 
-%? HW : yek tasvire x ra gerefte on ra ba maghadire tasadofie mokhtalef be ntsc tabdil konid va sepas keifiate tasavire be dast amade ra nesbat be tasvire ntsc e khorojie code matlab moghayese konid 
+%? HW : yek tasvire x ra gerefte on ra ba maghadire tasadofie mokhtalef be ntsc tabdil konid va sepas keifiate tasavire be dast amade ra nesbat be tasvire ntsc e khorojie code matlab moghayese konid
