@@ -582,5 +582,3 @@ psnr(double(I), I2)
 mse(double(I), I2)
 %? kamtar behtar
 % ميانگين مربعات خطا
-
-%? HW : yek tasvire x ra gerefte on ra ba maghadire tasadofie mokhtalef be ntsc tabdil konid va sepas keifiate tasavire be dast amade ra nesbat be tasvire ntsc e khorojie code matlab moghayese konid
